@@ -1,0 +1,61 @@
+.signUpOutBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.formBox {
+    min-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.506);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.or {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.or .orBorder {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.245);
+    width: 100%;
+}
+
+.createAccount {
+    margin: 20px;
+}
+
+.signupForm input {
+    width: 100%;
+    padding: 3px;
+    margin-bottom: 4px;
+    border-radius: 3px;
+}
+
+.signupForm label {
+    padding: 10px 0;
+}
+
+.err {
+    color: rgb(255, 46, 46);
+    font-size: 14px;
+}
+
+.signUpBtn {
+    width: 100%;
+    background-color: rgb(0, 149, 149);
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.haveAccount {
+    text-align: center;
+    margin-top: 5px;
+}

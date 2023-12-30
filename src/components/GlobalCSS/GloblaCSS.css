@@ -1,0 +1,42 @@
+/* font-family: 'Roboto Condensed', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+/* font-family: 'Bebas Neue', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    color: black;
+    background-color: white;
+}
+  
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: rgb(0, 69, 69);
+    color: white;
+}
+
+button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: white;
+    transition: 0.5s;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+button:hover {
+    color: aqua;
+}
+
+input {
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-family: 'Roboto Condensed', sans-serif;
+}

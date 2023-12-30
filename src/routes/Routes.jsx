@@ -8,6 +8,7 @@ import Jobs from './../components/pages/Jobs/Jobs';
 import AboutPage from './../components/pages/about/AboutPage';
 import ContactPage from './../components/pages/contacts/ContactPage';
 import Favorite from './../components/pages/Favorites/Favorite';
+import SignInForm from '../components/pages/SignUp/signIn/SignInForm';
 export const routes = createBrowserRouter([
     {
         element: <LayoutPage/>,
@@ -31,12 +32,16 @@ export const routes = createBrowserRouter([
             },
             {
                 element: <Favorite/>,
-                path: "/favorive"
+                path: "/favorite"
             }
         ]
     },
     {
         element: <SignUpForm/>,
-        path: "/signup"
+        path: "/signup",
+    },
+    {
+        element: <SignInForm/>,
+        path: "/signin"
     }
 ])

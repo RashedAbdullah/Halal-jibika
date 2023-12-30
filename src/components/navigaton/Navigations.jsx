@@ -2,6 +2,7 @@ import "./navigations.css";
 import { TiThMenu } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 import logo from "../../assets/halalLogo.png"
+import { NavLink } from "react-router-dom";
 
 
 const Navigations = () => {
@@ -10,7 +11,7 @@ const Navigations = () => {
       <div class="headerBox">
         <header>
           <div class="logo">
-            <p>Halal Jibika</p>
+            <p>HALAL JIBIKA</p>
           </div>
 
           <input type="checkbox" id="checkbox" />
@@ -22,27 +23,27 @@ const Navigations = () => {
           <nav class="navbar">
             <ul>
               <li>
-                <a href="">Home</a>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <a >
+                <NavLink to={"/jobs"}>
                   Jobs
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="">About</a>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li>
-                <a href="">Contact</a>
+                <NavLink to="/contact">Contact</NavLink>
               </li>
               <li>
-                <a href="">Favorite</a>
+                <NavLink to="/favorite">Favorites</NavLink>
               </li>
               <li>
-                <a href="">Sign up</a>
+                <NavLink to="/signup">Sign up</NavLink>
               </li>
               <li>
-                <a href="">Sign out</a>
+                <button>Sign out</button>
               </li>
             </ul>
           </nav>
