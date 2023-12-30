@@ -3,8 +3,12 @@ import { TiThMenu } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
+import { jibikaAuth } from "./../../auth/firebase.config";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Navigations = () => {
+  const [user] = useAuthState(jibikaAuth);
+
   return (
     <div>
       <div className="headerBox">
@@ -43,12 +47,31 @@ const Navigations = () => {
                 <NavLink to="/favorite">Favorites</NavLink>
               </li>
               <li>
-                <NavLink to="/signup" style={{ fontSize: "25px" }}>
-                  <FaSignInAlt />
-                </NavLink>
-              </li>
-              <li>
-                <button>Sign out</button>
+                {user ? (
+                  <NavLink
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                    to={"/userProfile"}
+                  >
+                    <span>{user?.displayName}</span>
+                    <img
+                      style={{
+                        height: "30px",
+                        width: "30px",
+                        borderRadius: "50%",
+                      }}
+                      src={user?.photoURL}
+                      alt=""
+                    />
+                  </NavLink>
+                ) : (
+                  <NavLink to="/signin" style={{ fontSize: "25px" }}>
+                    <FaSignInAlt />
+                  </NavLink>
+                )}
               </li>
             </ul>
           </nav>

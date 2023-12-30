@@ -1,0 +1,32 @@
+.userProfileMainDiv {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.userProfileMainDiv img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.userProfileMainDiv h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+}
+
+.userProfileMainDiv p {
+    margin-top: 10px;
+}
+
+.userProfileMainDiv button {
+    width: 100%;
+    background-color: rgb(0, 123, 123);
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+}

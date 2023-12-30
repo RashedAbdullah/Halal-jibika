@@ -9,6 +9,7 @@ import AboutPage from './../components/pages/about/AboutPage';
 import ContactPage from './../components/pages/contacts/ContactPage';
 import Favorite from './../components/pages/Favorites/Favorite';
 import SignInForm from '../components/pages/SignUp/signIn/SignInForm';
+import UserProfile from '../components/pages/userProfile/UserProfile';
 export const routes = createBrowserRouter([
     {
         element: <LayoutPage/>,
@@ -33,6 +34,10 @@ export const routes = createBrowserRouter([
             {
                 element: <Favorite/>,
                 path: "/favorite"
+            },
+            {
+                element: <UserProfile/>,
+                path: "/userProfile"
             }
         ]
     },
