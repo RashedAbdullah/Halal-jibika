@@ -2,9 +2,20 @@ import { FaLocationCrosshairs } from "react-icons/fa6";
 import { TiDeleteOutline } from "react-icons/ti";
 import { VscStarEmpty } from "react-icons/vsc";
 import { MdEditSquare } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { HalalJibikaContext } from "../../../context/JibikaContext";
 
 const SignleJob = ({ singleJob, handleDeleteJob }) => {
+  const navigate = useNavigate();
+
+  const {detailsId, setDetailsId} = useContext(HalalJibikaContext)
+
+  const handleSingleID = (id) => {
+    setDetailsId(id);
+    navigate("/jobdetails");
+  };
+
   return (
     <div className="singleJob">
       <div>
@@ -41,13 +52,16 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
           </button>
         </div>
         <div>
-          <button className="applyNowBtn">
-            <NavLink >Details</NavLink>
+          <button
+            onClick={() => handleSingleID(singleJob.id)}
+            className="applyNowBtn"
+          >
+            Details
           </button>
         </div>
         <div>
-          <button className="applyNowBtn">
-            <NavLink to={`/jobs/${singleJob.id}`}>Apply Now</NavLink>
+          <button onClick={() => navigate("/apply")} className="applyNowBtn">
+            Apply Now
           </button>
         </div>
       </div>

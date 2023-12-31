@@ -10,10 +10,11 @@ import Favorite from "./../components/pages/Favorites/Favorite";
 import SignInForm from "../components/pages/SignUp/signIn/SignInForm";
 import UserProfile from "../components/pages/userProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import JobDetails from "../components/pages/apply/JobDetails";
+import JobDetails from "../components/pages/JobDetails/JobDetails";
 import AddJob from "../components/pages/AddJob/AddJob";
 import JibikaContext from "../context/JibikaContext";
 import EdtiJob from "../components/pages/editJob/EditJobs";
+import ApplyForJob from "../components/pages/apply/ApplyForJob";
 
 export const routes = createBrowserRouter([
   {
@@ -62,6 +63,18 @@ export const routes = createBrowserRouter([
       {
         element: <AddJob />,
         path: "/addjob",
+      },
+      {
+        element: <ApplyForJob />,
+        path: "/apply",
+      },
+      {
+        element: (
+          <JibikaContext>
+            <JobDetails />
+          </JibikaContext>
+        ),
+        path: "/jobdetails",
       },
     ],
   },
