@@ -8,12 +8,12 @@
 
 .parentExloreBtn button {
     width: 100%;
-    padding: 5px;
+    padding: 10px;
     font-size: 18px;
     border-radius: 5px;
     background-color: rgb(0, 201, 201);
     color: rgb(0, 37, 37);
-    margin-top: 20px;
+    margin-top: 10px;
     transition: 0.4s;
 }
 
@@ -29,6 +29,30 @@ color: black;
 
 .demoTexts {
     width: 80%;
+}
+
+.demoTexts h2 {
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.demoTexts h2 > span {
+    color: aqua;
+}
+
+.demoTexts .demoTextDesc {
+    margin-top: 20px;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.demoTexts .demoTextDesc > span {
+    color: aqua;
+}
+
+.homeUnderHead {
+    letter-spacing: 2px;
 }
 
 .latestJobs p {

@@ -5,7 +5,8 @@ import { VscStarEmpty } from "react-icons/vsc";
 import { MdEditSquare } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
-const SignleJob = ({ singleJob }) => {
+const SignleJob = ({ singleJob, handleDeleteJob }) => {
+    
   return (
     <div className="singleJob">
       <div>
@@ -29,7 +30,7 @@ const SignleJob = ({ singleJob }) => {
 
       <div className="jobBtns">
         <div className="addDeleteEdtiBtn">
-          <button>
+          <button onClick={()=>handleDeleteJob(singleJob.id)}>
             <TiDeleteOutline size={"25px"} />
           </button>
           <button>

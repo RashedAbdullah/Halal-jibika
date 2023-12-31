@@ -24,41 +24,9 @@ const HomePage = () => {
     <div className="homePgaeMainDiv">
       <div className="demotextAndLatestJobs">
         <div className="demoTexts">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-            nostrum optio vero inventore ea, maiores eos, architecto, laborum
-            voluptas beatae perferendis magni ro inventore ea, maiores eos,
-            architecto, laborum voluptas beatae perferendis magni corrupti quas
-            iure illum aliquid! Maiores, hic quaerat. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Placeat nostrum optio vero inventore
-            ea, maiores eos, architecto, laborum volup ro inventore ea, maiores
-            eos, architecto, laborum voluptas beatae perferendis magni corrupti
-            quas iure illum aliquid! Maiores, hic quaerat. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Placeat nostrum optio vero
-            inventore ea, maiores eos, architecto, laborum volup corrupti quas
-            iure illum aliquid! Maiores, hic quaerat. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Placeat nostrum optio vero inventore
-            ea, maiores eos, architecto, laborum voluptas beatae perferendis
-            magni corrupti quas iure illum aliquid! Maiores, hic quaerat.
-          </p>
-          <p>
-            Lorem ipsum dolor ro inventore ea, maiores eos, architecto, laborum
-            voluptas beatae perferendis magni corrupti quas iure illum aliquid!
-            Maiores, hic quaerat. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Placeat nostrum optio vero inventore ea, maiores
-            eos, architecto, laborum volup ro inventore ea, maiores eos,
-            architecto, laborum voluptas beatae perferendis magni corrupti quas
-            iure illum aliquid! Maiores, hic quaerat. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Placeat nostrum optio vero inventore
-            ea, maiores eos, architecto, laborum volup sit amet consectetur
-            adipisicing elit. Placeat nostrum optio vero inventore ea, maiores
-            eos, architecto, laborum voluptas beatae perferendis magni corrupti
-            quas iure illum aliquid! Maiores, hic quaerat. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Placeat nostrum optio vero
-            inventore ea, maiores eos, architecto, laborum voluptas beatae
-            perferendis magni corrupti quas iure illum aliquid! Maiores, hic
-            quaerat.
-          </p>
+          <h2>Welcome to <span>Halal-Jibika</span> </h2>
+          <p className="homeUnderHead">Discover Meaningful Opportunities Aligned with Your Values</p>
+          <p className="demoTextDesc">Are you ready to embark on a professional journey that aligns with your ethical and Halal principles? Welcome to <span>Halal-Jibika</span>, where we believe in connecting talented individuals with employers who share their commitment to <span>ethical</span> and <span>Islamic business</span> practices</p>
         </div>
         <div className="">
           <div className="latestJobs">

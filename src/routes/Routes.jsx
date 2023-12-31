@@ -27,9 +27,14 @@ export const routes = createBrowserRouter([
         loader: () => fetch("http://localhost:9000/jobs"),
       },
       {
-        element: <ApplyPage />,
+        element: (
+          <PrivateRoute>
+            <ApplyPage />
+          </PrivateRoute>
+        ),
         path: "/jobs/:apply",
-        loader: ({params}) => fetch(`http://localhost:9000/jobs/${params.apply}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:9000/jobs/${params.apply}`),
       },
       {
         element: <AboutPage />,
