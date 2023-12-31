@@ -1,19 +1,64 @@
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { TiDeleteOutline } from "react-icons/ti";
-import { VscStarEmpty } from "react-icons/vsc";
+import { FaRegStar } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
 import { MdEditSquare } from "react-icons/md";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { HalalJibikaContext } from "../../../context/JibikaContext";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { jibikaAuth } from "../../../auth/firebase.config";
+import Swal from "sweetalert2";
+import { favoriteDataFunc } from "../../../localStorage/localStorage";
 
 const SignleJob = ({ singleJob, handleDeleteJob }) => {
   const navigate = useNavigate();
 
-  const {detailsId, setDetailsId} = useContext(HalalJibikaContext)
+  const { detailsId, setDetailsId } = useContext(HalalJibikaContext);
+  const [user] = useAuthState(jibikaAuth);
 
   const handleSingleID = (id) => {
-    setDetailsId(id);
-    navigate("/jobdetails");
+    if (!user) {
+      navigate("/signin");
+      return Swal.fire({
+        title: "Sign in first for see details",
+        icon: "warning",
+      });
+    } else {
+      setDetailsId(id);
+      navigate("/jobdetails");
+    }
+  };
+
+  const [favorite, setFavorite] = useState(favoriteDataFunc());
+  const [isFavorite, setIsFavorite] = useState(false);
+  console.log(favorite);
+  const handleFavorite = (id) => {
+    if (!isFavorite) {
+      setFavorite([...favorite, singleJob]);
+    } else {
+      if(id === singleJob.id){
+        
+      }
+    }
+    // setFavorite([]);
+    setIsFavorite(!isFavorite);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("favoriteData", JSON.stringify(favorite));
+  }, [favorite]);
+
+  const handleApplyJob = () => {
+    if (!user) {
+      navigate("/signin");
+      return Swal.fire({
+        title: "Without signed in Cannot Apply",
+        icon: "warning",
+      });
+    } else {
+      navigate("/apply");
+    }
   };
 
   return (
@@ -47,8 +92,12 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
               <MdEditSquare size={"25px"} />
             </NavLink>
           </button>
-          <button>
-            <VscStarEmpty size={"25px"} />
+          <button onClick={() => handleFavorite(singleJob.id)}>
+            {isFavorite ? (
+              <FaStar size={"25px"} />
+            ) : (
+              <FaRegStar size={"25px"} />
+            )}
           </button>
         </div>
         <div>
@@ -60,7 +109,7 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
           </button>
         </div>
         <div>
-          <button onClick={() => navigate("/apply")} className="applyNowBtn">
+          <button onClick={handleApplyJob} className="applyNowBtn">
             Apply Now
           </button>
         </div>

@@ -12,7 +12,6 @@ const JobDetails = () => {
   useEffect(() => {
     const dataFetch = async () => {
       try {
-        // const data = await fetch(`http://localhost:9000/jobs/${detailsId}`);
         const data = await fetch(`http://localhost:9000/jobs/${detailsId}`);
         const toJSON = await data.json();
         setJobDetails(toJSON);
