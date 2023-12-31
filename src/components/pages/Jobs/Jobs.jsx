@@ -12,8 +12,6 @@ const Jobs = () => {
   const allJobs = useLoaderData();
   const [user] = useAuthState(jibikaAuth);
 
-  const [updatedJobs, setUpdatedJobs] = useState([]);
-
   const handleDeleteJob = (id) => {
     if (!user) {
       return Swal.fire({
@@ -36,7 +34,6 @@ const Jobs = () => {
         console.log(error);
       });
   };
-  console.log(updatedJobs);
 
   return (
     <div>
@@ -44,26 +41,20 @@ const Jobs = () => {
         <h2>Available Jobs</h2>
       </div>
       <div className="allJobs">
-        {updatedJobs.length > 0
-          ? updatedJobs?.map((singleJob) => (
-              <SignleJob
-                key={singleJob.id}
-                singleJob={singleJob}
-                handleDeleteJob={handleDeleteJob}
-              />
-            ))
-          : allJobs?.map((singleJob) => (
-              <SignleJob
-                key={singleJob.id}
-                singleJob={singleJob}
-                handleDeleteJob={handleDeleteJob}
-              />
-            ))}
+        {allJobs?.map((singleJob) => (
+          <SignleJob
+            key={singleJob.id}
+            singleJob={singleJob}
+            handleDeleteJob={handleDeleteJob}
+          />
+        ))}
       </div>
-      <div className="addAJobPage">
-        <h2></h2>
-        <NavLink to={"/addjob"}>Add A job</NavLink>
-      </div>
+      {user && (
+        <div className="addAJobPage">
+          <h2>You can Add more Jobs</h2>
+          <NavLink to={"/addjob"}>Add A job</NavLink>
+        </div>
+      )}
     </div>
   );
 };
