@@ -1,9 +1,14 @@
 import { createContext } from "react";
 
+export const HalalJibikaContext = createContext();
 const JibikaContext = ({ children }) => {
-  const HalalJibikaContext = createContext();
+
+  const handleEditJob = (id) => {
+    
+  };
+
   return (
-    <HalalJibikaContext.Provider value={"Anything"}>
+    <HalalJibikaContext.Provider value={{handleEditJob}}>
       {children}
     </HalalJibikaContext.Provider>
   );

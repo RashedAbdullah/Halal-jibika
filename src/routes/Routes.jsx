@@ -10,8 +10,10 @@ import Favorite from "./../components/pages/Favorites/Favorite";
 import SignInForm from "../components/pages/SignUp/signIn/SignInForm";
 import UserProfile from "../components/pages/userProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
-import ApplyPage from "../components/pages/apply/ApplyPage";
+import JobDetails from "../components/pages/apply/JobDetails";
 import AddJob from "../components/pages/AddJob/AddJob";
+import JibikaContext from "../context/JibikaContext";
+import EdtiJob from "../components/pages/editJob/EditJobs";
 
 export const routes = createBrowserRouter([
   {
@@ -23,19 +25,23 @@ export const routes = createBrowserRouter([
         path: "/",
       },
       {
-        element: <Jobs />,
+        element: (
+          <JibikaContext>
+            <Jobs />
+          </JibikaContext>
+        ),
         path: "/jobs",
         loader: () => fetch("http://localhost:9000/jobs"),
       },
       {
         element: (
           <PrivateRoute>
-            <ApplyPage />
+            <EdtiJob />
           </PrivateRoute>
         ),
-        path: "/jobs/:apply",
+        path: "/jobs/:editJob",
         loader: ({ params }) =>
-          fetch(`http://localhost:9000/jobs/${params.apply}`),
+          fetch(`http://localhost:9000/jobs/${params.editJob}`),
       },
       {
         element: <AboutPage />,
@@ -54,9 +60,9 @@ export const routes = createBrowserRouter([
         path: "/userProfile",
       },
       {
-        element: <AddJob/>,
-        path: "/addjob"
-      }
+        element: <AddJob />,
+        path: "/addjob",
+      },
     ],
   },
   {

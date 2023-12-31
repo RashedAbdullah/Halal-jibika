@@ -3,9 +3,9 @@ import { useLoaderData } from "react-router-dom";
 import "./applyJob.css";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 
-const ApplyPage = () => {
+const JobDetails = () => {
   const singleJobData = useLoaderData();
-  console.log(singleJobData);
+
   return (
     <div className="applymainDiv">
       <div className="applyJobTitle">
@@ -41,4 +41,4 @@ const ApplyPage = () => {
   );
 };
 
-export default ApplyPage;
+export default JobDetails;

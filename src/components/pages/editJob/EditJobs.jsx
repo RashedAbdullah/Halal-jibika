@@ -1,22 +1,32 @@
-import { useContext, useState } from "react";
-import "./addJob.css";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "./editJob.css";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const AddJob = () => {
-
-
+const EdtiJob = () => {
+  const {
+    id,
+    title,
+    logo,
+    companyName,
+    position,
+    location,
+    experience,
+    qualification,
+    description,
+  } = useLoaderData();
+  console.log(description);
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({
-    company: "",
-    title: "",
-    position: "",
-    experience: "",
-    qualification: "",
-    location: "",
-    description: "",
-    url: "",
+    company: companyName,
+    title: title,
+    position: position,
+    experience: experience,
+    qualification: qualification,
+    location: location,
+    description: description,
+    logo: logo,
   });
 
   const handleChangingData = (e) => {
@@ -28,34 +38,37 @@ const AddJob = () => {
 
   const postData = () => {
     const serverData = {
-      id: Date.now(),
+      id: id,
       title: inputData.title,
-      logo: inputData.url,
       companyName: inputData.company,
       position: inputData.position,
       location: inputData.location,
       experience: inputData.experience,
       qualification: inputData.qualification,
       description: inputData.description,
+      logo: inputData.logo,
     };
     axios
-      .post("http://localhost:9000/jobs", serverData)
+      .put(`http://localhost:9000/jobs/${id}`, serverData)
       .then(function (response) {
-        navigate("/jobs");
-        console.log(response);
+        console.log(response.data);
+        navigate(-1);
         return Swal.fire({
-          title: "Successfully added ned job",
+          title: "Successfully Updated jon info",
           icon: "success",
         });
       })
       .catch(function (error) {
-        console.log(error);
+        return Swal.fire({
+          title: error.message,
+          icon: "error",
+        });
       });
   };
 
   const handleAddJobFrom = (e) => {
     e.preventDefault();
-    console.log(inputData);
+    console.log(id);
     postData();
   };
 
@@ -121,11 +134,21 @@ const AddJob = () => {
         </div>
         <div>
           <label>Description: </label>
-          <input onChange={handleChangingData} type="text" name="description" />
+          <input
+            value={inputData.description}
+            onChange={handleChangingData}
+            type="text"
+            name="description"
+          />
         </div>
         <div>
-          <label>Logo URL: </label>
-          <input onChange={handleChangingData} type="text" name="url" />
+          <label>Logo: </label>
+          <input
+            value={inputData.logo}
+            onChange={handleChangingData}
+            type="text"
+            name="logo"
+          />
         </div>
         <div>
           <button>Sumbit</button>
@@ -135,4 +158,4 @@ const AddJob = () => {
   );
 };
 
-export default AddJob;
+export default EdtiJob;

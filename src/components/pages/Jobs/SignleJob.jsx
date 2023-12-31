@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 import { TiDeleteOutline } from "react-icons/ti";
 import { VscStarEmpty } from "react-icons/vsc";
@@ -6,7 +5,6 @@ import { MdEditSquare } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const SignleJob = ({ singleJob, handleDeleteJob }) => {
-    
   return (
     <div className="singleJob">
       <div>
@@ -30,14 +28,21 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
 
       <div className="jobBtns">
         <div className="addDeleteEdtiBtn">
-          <button onClick={()=>handleDeleteJob(singleJob.id)}>
+          <button onClick={() => handleDeleteJob(singleJob.id)}>
             <TiDeleteOutline size={"25px"} />
           </button>
           <button>
-            <MdEditSquare size={"25px"} />
+            <NavLink to={`/jobs/${singleJob.id}`}>
+              <MdEditSquare size={"25px"} />
+            </NavLink>
           </button>
           <button>
             <VscStarEmpty size={"25px"} />
+          </button>
+        </div>
+        <div>
+          <button className="applyNowBtn">
+            <NavLink >Details</NavLink>
           </button>
         </div>
         <div>
