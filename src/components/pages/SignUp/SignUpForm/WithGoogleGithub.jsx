@@ -8,6 +8,7 @@ import {
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import LoadingPage from "../../loading/LoadingPage";
 
 const WithGoogleGithub = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
@@ -16,6 +17,10 @@ const WithGoogleGithub = () => {
     useSignInWithGithub(jibikaAuth);
 
   const navigate = useNavigate();
+
+  if(googleLoading || githubLoading){
+    <LoadingPage/>
+  }
 
   if (googleError || githubError) {
     return Swal.fire({

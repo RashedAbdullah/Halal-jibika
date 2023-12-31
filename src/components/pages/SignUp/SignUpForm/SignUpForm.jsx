@@ -10,6 +10,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../../auth/firebase.config";
 import Swal from "sweetalert2";
+import LoadingPage from "../../loading/LoadingPage";
 
 const SignUpForm = () => {
   const initialState = {
@@ -41,6 +42,9 @@ const SignUpForm = () => {
       title: error?.message,
       icon: "error",
     });
+  }
+  if(loading){
+    return <LoadingPage/>
   }
 
   useEffect(() => {

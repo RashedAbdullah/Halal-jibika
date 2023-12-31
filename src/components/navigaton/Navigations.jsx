@@ -56,7 +56,7 @@ const Navigations = () => {
                     }}
                     to={"/userProfile"}
                   >
-                    <span>{user?.displayName}</span>
+                    <span style={{ color: "aqua" }}>{user?.displayName}</span>
                     <img
                       style={{
                         height: "30px",

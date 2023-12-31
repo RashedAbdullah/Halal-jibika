@@ -5,6 +5,7 @@ import WithGoogleGithub from "../SignUpForm/WithGoogleGithub";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../../auth/firebase.config";
 import Swal from "sweetalert2";
+import LoadingPage from "../../loading/LoadingPage";
 const SignInForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,7 +16,7 @@ const SignInForm = () => {
   useEffect(() => {
     const handleSignInEffect = async () => {
       if (loading) {
-        return;
+        return <LoadingPage/>;
       }
 
       if (error) {
