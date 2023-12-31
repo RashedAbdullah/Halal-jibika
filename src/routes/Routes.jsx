@@ -11,6 +11,7 @@ import SignInForm from "../components/pages/SignUp/signIn/SignInForm";
 import UserProfile from "../components/pages/userProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
 import ApplyPage from "../components/pages/apply/ApplyPage";
+import AddJob from "../components/pages/AddJob/AddJob";
 
 export const routes = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const routes = createBrowserRouter([
         element: <UserProfile />,
         path: "/userProfile",
       },
+      {
+        element: <AddJob/>,
+        path: "/addjob"
+      }
     ],
   },
   {

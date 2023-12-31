@@ -95,3 +95,11 @@
     margin-top: 5px;
     letter-spacing: 1px;
 }
+
+.addAJobPage a{
+    width: 50%;
+    background-color: rgb(0, 136, 136);
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}

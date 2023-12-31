@@ -1,16 +1,40 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import SignleJob from "./SignleJob";
 import "./jobs.css";
+import AddJob from "../AddJob/AddJob";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { jibikaAuth } from "../../../auth/firebase.config";
 
 const Jobs = () => {
   const allJobs = useLoaderData();
+  const [user] = useAuthState(jibikaAuth);
 
   const [updatedJobs, setUpdatedJobs] = useState([]);
 
   const handleDeleteJob = (id) => {
-    const filteredJobs = allJobs.filter((singleJob) => singleJob.id !== id);
-    setUpdatedJobs(filteredJobs);
+    if (!user) {
+      return Swal.fire({
+        title: "You cannot delete data!",
+        text: "Please sign in or sign up first!",
+        icon: "warning",
+      });
+    }
+    axios
+      .delete(`http://localhost:9000/jobs/${id}`)
+      .then(function (response) {
+        console.log(response);
+        return Swal.fire({
+          title: "You deleted A job from data",
+          text: "Please Refresh the browser!",
+          icon: "info",
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   console.log(updatedJobs);
 
@@ -35,6 +59,10 @@ const Jobs = () => {
                 handleDeleteJob={handleDeleteJob}
               />
             ))}
+      </div>
+      <div className="addAJobPage">
+        <h2></h2>
+        <NavLink to={"/addjob"}>Add A job</NavLink>
       </div>
     </div>
   );

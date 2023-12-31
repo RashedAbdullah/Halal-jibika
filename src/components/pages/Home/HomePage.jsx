@@ -24,9 +24,19 @@ const HomePage = () => {
     <div className="homePgaeMainDiv">
       <div className="demotextAndLatestJobs">
         <div className="demoTexts">
-          <h2>Welcome to <span>Halal-Jibika</span> </h2>
-          <p className="homeUnderHead">Discover Meaningful Opportunities Aligned with Your Values</p>
-          <p className="demoTextDesc">Are you ready to embark on a professional journey that aligns with your ethical and Halal principles? Welcome to <span>Halal-Jibika</span>, where we believe in connecting talented individuals with employers who share their commitment to <span>ethical</span> and <span>Islamic business</span> practices</p>
+          <h2>
+            Welcome to <span>Halal-Jibika</span>{" "}
+          </h2>
+          <p className="homeUnderHead">
+            Discover Meaningful Opportunities Aligned with Your Values
+          </p>
+          <p className="demoTextDesc">
+            Are you ready to embark on a professional journey that aligns with
+            your ethical and Halal principles? Welcome to{" "}
+            <span>Halal-Jibika</span>, where we believe in connecting talented
+            individuals with employers who share their commitment to{" "}
+            <span>ethical</span> and <span>Islamic business</span> practices
+          </p>
         </div>
         <div className="">
           <div className="latestJobs">
