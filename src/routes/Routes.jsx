@@ -10,6 +10,7 @@ import Favorite from "./../components/pages/Favorites/Favorite";
 import SignInForm from "../components/pages/SignUp/signIn/SignInForm";
 import UserProfile from "../components/pages/userProfile/UserProfile";
 import PrivateRoute from "./PrivateRoute";
+import ApplyPage from "../components/pages/apply/ApplyPage";
 
 export const routes = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ export const routes = createBrowserRouter([
         element: <Jobs />,
         path: "/jobs",
         loader: () => fetch("http://localhost:9000/jobs"),
+      },
+      {
+        element: <ApplyPage />,
+        path: "/jobs/:apply",
+        loader: ({params}) => fetch(`http://localhost:9000/jobs/${params.apply}`),
       },
       {
         element: <AboutPage />,

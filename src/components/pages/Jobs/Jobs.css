@@ -1,0 +1,97 @@
+.jobTitle h2{
+    font-weight: normal;
+    font-size: 40px;
+    text-align: center;
+    padding: 10px;
+}
+
+.allJobs {
+    margin: auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.singleJob {
+    background-color: rgb(0, 95, 95);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.singleJob:hover {
+    transform: scale(0.98);
+}
+
+.jobImgAndLogo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.jobImgAndLogo img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.jobBtns {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.applyNowBtn {
+    font-size: 16px;
+    padding: 5px 10px;
+    background-color: rgb(0, 79, 79);
+    border-radius: 5px;
+}
+
+.addDeleteEdtiBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.addDeleteEdtiBtn button {
+    font-size: 20px;
+}
+
+.jobDesc {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.474);
+    border-radius: 10px;
+    margin: 10px 0;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.873);
+}
+
+.jobPosition {
+    letter-spacing: 3px;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.jobLocation {
+    display: flex;
+    gap: 5px;
+    margin: 5px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+
+.singleTitle, .req, .qualification {
+    font-size: 15px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
