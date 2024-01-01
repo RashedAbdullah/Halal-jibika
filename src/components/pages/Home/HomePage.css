@@ -61,3 +61,10 @@ color: black;
     padding: 10px 0;
     border-bottom: 1px solid white;
 }
+
+.latestJobTitle {
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-size: 28px;
+}

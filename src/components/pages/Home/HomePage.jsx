@@ -4,6 +4,7 @@ import { jibikaAuth } from "../../../auth/firebase.config";
 import Swal from "sweetalert2";
 import "./HomePage.css";
 import { FaArrowRight } from "react-icons/fa";
+import LatestJobs from "./LatestJobs";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -36,35 +37,6 @@ const HomePage = () => {
             <span>Halal-Jibika</span>, where we believe in connecting talented
             individuals with employers who share their commitment to{" "}
             <span>ethical</span> and <span>Islamic business</span> practices
-          </p>
-        </div>
-        <div className="">
-          <div className="latestJobs">
-            <h2>Latest jobs ...</h2>
-            <p>Job one title is here</p>
-            <p>Job one title is here</p>
-            <p>Job one title is here</p>
-            <p>Job one title is here</p>
-            <p>Job one title is here</p>
-          </div>
-          <div className="parentExloreBtn">
-            <button
-              onClick={handleExploreBtn}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                backgroundColor: "transparent",
-                border: "1px solid white",
-                color: "white",
-                gap: "5px",
-                justifyContent: "center",
-              }}
-            >
-              Explore All Jobs <FaArrowRight />
-            </button>
-          </div>
-        </div>
-      </div>
       <div className="parentExloreBtn">
         <button
           style={{
@@ -77,6 +49,10 @@ const HomePage = () => {
         >
           Explore Now <FaArrowRight />
         </button>
+      </div>
+          </p>
+        </div>
+        <LatestJobs />
       </div>
     </div>
   );

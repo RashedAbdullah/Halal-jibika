@@ -9,11 +9,11 @@ import { HalalJibikaContext } from "../../../context/JibikaContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../auth/firebase.config";
 import Swal from "sweetalert2";
-import { favoriteDataFunc } from "../../../localStorage/localStorage";
+import axios from "axios";
 
-const SignleJob = ({ singleJob, handleDeleteJob }) => {
+const SignleJob = ({ singleJob, handleDeleteJob, handleFavorites }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
   const navigate = useNavigate();
-
   const { detailsId, setDetailsId } = useContext(HalalJibikaContext);
   const [user] = useAuthState(jibikaAuth);
 
@@ -30,25 +30,6 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
     }
   };
 
-  const [favorite, setFavorite] = useState(favoriteDataFunc());
-  const [isFavorite, setIsFavorite] = useState(false);
-  console.log(favorite);
-  const handleFavorite = (id) => {
-    if (!isFavorite) {
-      setFavorite([...favorite, singleJob]);
-    } else {
-      if(id === singleJob.id){
-        
-      }
-    }
-    // setFavorite([]);
-    setIsFavorite(!isFavorite);
-  };
-
-  useEffect(() => {
-    localStorage.setItem("favoriteData", JSON.stringify(favorite));
-  }, [favorite]);
-
   const handleApplyJob = () => {
     if (!user) {
       navigate("/signin");
@@ -59,6 +40,46 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
     } else {
       navigate("/apply");
     }
+  };
+
+  // console.log(singleJob.isFavorite)
+  const [update, setUpdate] = useState(false);
+  const handleFavoriteJobs = (id) => {
+    setUpdate(!update);
+    const favoriteData = {
+      id: singleJob.id,
+      isFavorite: update ? false : true,
+      title: singleJob.title,
+      logo: singleJob.logo,
+      companyName: singleJob.companyName,
+      position: singleJob.position,
+      location: singleJob.location,
+      experience: singleJob.experience,
+      qualification: singleJob.qualification,
+      description: singleJob.description,
+    };
+    axios
+      .put(`http://localhost:9000/jobs/${id}`, favoriteData)
+      .then(function (response) {
+        console.log(response.data.isFavorite);
+        if (response.data.isFavorite) {
+          return Swal.fire({
+            title: "Added In favories",
+            icon: "success",
+          });
+        } else {
+          return Swal.fire({
+            title: "Removed From favories",
+            icon: "warning",
+          });
+        }
+      })
+      .catch(function (error) {
+        return Swal.fire({
+          title: error.message,
+          icon: "error",
+        });
+      });
   };
 
   return (
@@ -92,12 +113,8 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
               <MdEditSquare size={"25px"} />
             </NavLink>
           </button>
-          <button onClick={() => handleFavorite(singleJob.id)}>
-            {isFavorite ? (
-              <FaStar size={"25px"} />
-            ) : (
-              <FaRegStar size={"25px"} />
-            )}
+          <button onClick={() => handleFavoriteJobs(singleJob.id)}>
+            <FaRegStar size={"25px"} />
           </button>
         </div>
         <div>

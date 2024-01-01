@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLoaderData } from "react-router-dom";
 import SignleJob from "./SignleJob";
 import "./jobs.css";
@@ -7,10 +7,22 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../auth/firebase.config";
+import { favoriteDataFunc } from "./../../../localStorage/localStorage";
 
 const Jobs = () => {
   const allJobs = useLoaderData();
+
   const [user] = useAuthState(jibikaAuth);
+
+  const [favorites, setFavorites] = useState(favoriteDataFunc());
+
+  // useEffect(() => {
+  //   localStorage.setItem("favoriteData", JSON.stringify(favorites));
+  // }, [favorites]);
+
+  const handleFavorites = (id) => {
+    setFavorites([...favorites, id]);
+  };
 
   const handleDeleteJob = (id) => {
     if (!user) {
@@ -20,19 +32,31 @@ const Jobs = () => {
         icon: "warning",
       });
     }
-    axios
-      .delete(`http://localhost:9000/jobs/${id}`)
-      .then(function (response) {
-        console.log(response);
-        return Swal.fire({
-          title: "You deleted A job from data",
-          text: "Please Refresh the browser!",
-          icon: "info",
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:9000/jobs/${id}`)
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
         });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+      }
+    });
   };
 
   return (
@@ -46,6 +70,7 @@ const Jobs = () => {
             key={singleJob.id}
             singleJob={singleJob}
             handleDeleteJob={handleDeleteJob}
+            handleFavorites={handleFavorites}
           />
         ))}
       </div>
