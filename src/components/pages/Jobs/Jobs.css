@@ -1,8 +1,13 @@
+.mainDivForJobs {
+    position: relative;
+}
+
 .jobTitle h2{
     font-weight: normal;
     font-size: 40px;
     text-align: center;
     padding: 10px;
+    margin: 30px;
 }
 
 .allJobs {
@@ -12,6 +17,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
     font-size: 18px;
+
 }
 
 .singleJob {
@@ -20,6 +26,7 @@
     border-radius: 10px;
     position: relative;
     transition: 0.3s;
+    margin-bottom: 20px;
 }
 
 .singleJob:hover {
@@ -98,18 +105,15 @@
 
 .addAJobPage {
     text-align: center;
-    margin: 50px;
-}
-
-.addAJobPage h2 {
-    margin: 20px;
-    font-weight: normal;
+    position: absolute;
+    top: 20px;
+    right: 70px;
 }
 
 .addAJobPage a {
     background-color: rgb(0, 136, 136);
     font-size: 20px;
-    padding: 5px 200px;
+    padding: 15px 30px;
     border-radius: 5px;
     margin-top: 70px;
     transition: 0.3s;
@@ -118,4 +122,19 @@
 .addAJobPage a:hover {
     color: aqua;
     background-color: rgb(0, 26, 26);
+}
+
+@media (max-width: 1050px) {
+    .allJobs {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 780px) {
+    .allJobs {
+        grid-template-columns: 1fr;
+    }
+    .addAJobPage {
+        position: static;
+        margin: 30px;
+    }
 }

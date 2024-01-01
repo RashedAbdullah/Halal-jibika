@@ -31,26 +31,26 @@ const HomePage = () => {
           <p className="homeUnderHead">
             Discover Meaningful Opportunities Aligned with Your Values
           </p>
-          <p className="demoTextDesc">
+          <div className="demoTextDesc">
             Are you ready to embark on a professional journey that aligns with
             your ethical and Halal principles? Welcome to{" "}
             <span>Halal-Jibika</span>, where we believe in connecting talented
             individuals with employers who share their commitment to{" "}
             <span>ethical</span> and <span>Islamic business</span> practices
-      <div className="parentExloreBtn">
-        <button
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "5px",
-            justifyContent: "center",
-          }}
-          onClick={handleExploreBtn}
-        >
-          Explore Now <FaArrowRight />
-        </button>
-      </div>
-          </p>
+            <div className="parentExloreBtn">
+              <button
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                  justifyContent: "center",
+                }}
+                onClick={handleExploreBtn}
+              >
+                Explore Now <FaArrowRight />
+              </button>
+            </div>
+          </div>
         </div>
         <LatestJobs />
       </div>

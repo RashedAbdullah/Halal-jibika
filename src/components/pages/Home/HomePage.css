@@ -1,9 +1,9 @@
 .homePgaeMainDiv {
-    height: 90vh;
     padding: 50px;
+    min-height: 100vh;
 }
 .parentExloreBtn {
-    width: 200px;
+    max-width: 200px;
 }
 
 .parentExloreBtn button {
@@ -18,8 +18,8 @@
 }
 
 .parentExloreBtn button:hover {
-background-color: aqua;
-color: black;
+    background-color: aqua;
+    color: black;
 }
 
 .demotextAndLatestJobs {
@@ -43,7 +43,7 @@ color: black;
 
 .demoTexts .demoTextDesc {
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 25px;
     letter-spacing: 1px;
     text-transform: capitalize;
 }
@@ -67,4 +67,25 @@ color: black;
     text-transform: uppercase;
     font-weight: normal;
     font-size: 28px;
+}
+
+@media (max-width: 820px) {
+    .demotextAndLatestJobs {
+        display: block;
+    }
+
+    .demoTexts {
+        width: auto;
+    }
+    .demoTexts h2 {
+        font-size: 35px;
+    }
+
+    .demoTexts .demoTextDesc {
+        font-size: 25px;
+    }
+    .latestJobTitle {
+        margin-top: 50px;
+        font-weight: bold;
+    }
 }

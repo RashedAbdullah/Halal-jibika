@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../auth/firebase.config";
 import { favoriteDataFunc } from "./../../../localStorage/localStorage";
+import { FaPlus } from "react-icons/fa6";
+
 
 const Jobs = () => {
   const allJobs = useLoaderData();
@@ -60,7 +62,12 @@ const Jobs = () => {
   };
 
   return (
-    <div>
+    <div className="mainDivForJobs">
+        {user && (
+          <div className="addAJobPage">
+            <NavLink to={"/addjob"}>Add A job <FaPlus /></NavLink>
+          </div>
+        )}
       <div className="jobTitle">
         <h2>Available Jobs</h2>
       </div>
@@ -74,12 +81,6 @@ const Jobs = () => {
           />
         ))}
       </div>
-      {user && (
-        <div className="addAJobPage">
-          <h2>You can Add more Jobs</h2>
-          <NavLink to={"/addjob"}>Add A job</NavLink>
-        </div>
-      )}
     </div>
   );
 };

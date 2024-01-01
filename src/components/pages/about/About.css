@@ -1,0 +1,58 @@
+.mainAboutPage {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutNotRounded {
+    min-width: 60%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutNotRounded > div {
+    width: 80%;
+    letter-spacing: 1px;
+}
+
+.aboutNotRounded > div  p {
+    margin-top: 10px;
+}
+
+.aboutRoundedFolder {
+    height: 70%;
+    min-width: 40%;
+    padding: 50px;
+    background-color: rgb(0, 101, 101);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    display: flex;
+    align-items: center;
+}
+
+.aboutRoundedFolder div h1  {
+    font-size: 60px;
+}
+
+@media (max-width: 900px) {
+    .mainAboutPage {
+        display: block;
+        height: auto;
+    }
+    .aboutRoundedFolder {
+        margin-top: 50px;
+        width: 90%;
+        height: 50%;
+    }
+    .aboutRoundedFolder div h1{
+        font-size: 40px;
+    }
+    .aboutNotRounded > div {
+        margin: 50px 0;
+    }
+}

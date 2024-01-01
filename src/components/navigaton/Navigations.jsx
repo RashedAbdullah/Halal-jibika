@@ -24,7 +24,7 @@ const Navigations = () => {
           </div>
 
           <nav className="navbar">
-            <ul>
+            <ul className="displayNone">
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
@@ -67,7 +67,9 @@ const Navigations = () => {
                   </NavLink>
                 )}
               </li>
-              <li>
+            </ul>
+            <ul className="menuBar">
+              <li className="">
                 <button onClick={() => setIsMenu(!isMenu)}>
                   {isMenu ? (
                     <CgClose size={"22px"} />
@@ -80,7 +82,7 @@ const Navigations = () => {
           </nav>
         </header>
         {isMenu && (
-          <nav className="smNavbar">
+          <nav onClick={() => setIsMenu(!isMenu)} className="smNavbar">
             <ul>
               <li>
                 <NavLink to="/">Home</NavLink>
