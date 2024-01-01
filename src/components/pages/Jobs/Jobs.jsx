@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, useLoaderData } from "react-router-dom";
 import SignleJob from "./SignleJob";
-import "./jobs.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../auth/firebase.config";
 import { favoriteDataFunc } from "./../../../localStorage/localStorage";
 import { FaPlus } from "react-icons/fa6";
-
+import "./JobsCSS.css";
 
 const Jobs = () => {
   const allJobs = useLoaderData();
@@ -58,11 +57,13 @@ const Jobs = () => {
 
   return (
     <div className="mainDivForJobs">
-        {user && (
-          <div className="addAJobPage">
-            <NavLink to={"/addjob"}>Add A job <FaPlus /></NavLink>
-          </div>
-        )}
+      {user && (
+        <div className="addAJobPage">
+          <NavLink to={"/addjob"}>
+            Add A job <FaPlus />
+          </NavLink>
+        </div>
+      )}
       <div className="jobTitle">
         <h2>Available Jobs</h2>
       </div>
