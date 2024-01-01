@@ -1,11 +1,13 @@
-
 .mainFavoriteDiv {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     width: 90%;
     margin: auto;
+    padding: 20px;
     gap: 20px;
-}
+    opacity: 0;
+    animation: fadeIn 1s ease forwards; 
+  }
 
 .favoriteCard {
     background-color: rgb(0, 105, 105);
@@ -14,7 +16,14 @@
     position: relative;
     letter-spacing: 1px;
     margin-bottom: 20px;
-}
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+.favoriteCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
+  }
 
 .favoriteCard img {
     width: 70px;
@@ -23,12 +32,30 @@
     position: absolute;
     top: 10px;
     right: 10px;
-}
+  }
 
 .favoriteCard p {
     margin-top: 10px;
-}
-
-.favoriteCard span {
+  }
+  
+  .favoriteCard span {
     color: aqua;
-}
+  }
+  
+@media (max-width: 1200px) {
+    .mainFavoriteDiv {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 800px) {
+    .mainFavoriteDiv {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }

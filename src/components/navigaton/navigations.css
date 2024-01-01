@@ -1,10 +1,10 @@
-
-
-
 header {
   width: 100%;
   padding: 1rem 6%;
-  
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 0.5s forwards;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,5 +69,12 @@ div .menuBar {
 
   div .displayNone {
     display: none;
+  }
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -83,7 +83,7 @@ const SignleJob = ({ singleJob, handleDeleteJob, handleFavorites }) => {
   };
 
   return (
-    <div className="singleJob">
+    <div className="singleJob fadeIn">
       <div>
         <p className="jobPosition">{singleJob.position}</p>
         <div className="jobImgAndLogo">

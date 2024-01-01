@@ -1,3 +1,4 @@
+// LatestJobs.jsx
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -24,33 +25,31 @@ const LatestJobs = () => {
     fetchData();
   }, []);
 
-  const handleLatesJob = ()=>{
-      if(!user){
-        navigate("/signin");
-        return Swal.fire({
-            title: "Sing in first",
-            icon: "info",
-        })
+  const handleLatesJob = () => {
+    if (!user) {
+      navigate("/signin");
+      return Swal.fire({
+        title: "Sign in first",
+        icon: "info",
+      });
     }
     navigate("/jobs");
-  }
+  };
 
   return (
-    <>
-      <div className="">
-        <h2 className="latestJobTitle">Latest jobs ...</h2>
-        {latestJobs?.slice(0, 5).map((job) => (
-          <div key={job.id} className="latestJobs">
-            <p>{job.title}</p>
-          </div>
-        ))}
-        <div className="parentExloreBtn">
-          <button onClick={handleLatesJob}>
-            Explore All Jobs <FaArrowRight />
-          </button>
+    <div className="latestJobsContainer">
+      <h2 className="latestJobTitle">Latest Jobs ...</h2>
+      {latestJobs?.slice(0, 5).map((job) => (
+        <div key={job.id} className="latestJobItem">
+          <p>{job.title}</p>
         </div>
+      ))}
+      <div className="exploreBtnContainer">
+        <button className="latestBtn" onClick={handleLatesJob}>
+          Explore All Jobs <FaArrowRight />
+        </button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,36 @@
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(0, 88, 88);
+}
+
+.errorBox {
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* White background */
+    text-align: center;
+}
+
+.errorIcon {
+    font-size: 60px;
+    color: #721c24; /* Dark red icon color */
+}
+
+.errorMessage {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #721c24; /* Dark red text color */
+}
+
+.goHome {
+    background-color: rgb(0, 56, 56);
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}

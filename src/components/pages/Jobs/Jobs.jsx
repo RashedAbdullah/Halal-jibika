@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useLoaderData } from "react-router-dom";
 import SignleJob from "./SignleJob";
 import "./jobs.css";
-import AddJob from "../AddJob/AddJob";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -17,10 +16,6 @@ const Jobs = () => {
   const [user] = useAuthState(jibikaAuth);
 
   const [favorites, setFavorites] = useState(favoriteDataFunc());
-
-  // useEffect(() => {
-  //   localStorage.setItem("favoriteData", JSON.stringify(favorites));
-  // }, [favorites]);
 
   const handleFavorites = (id) => {
     setFavorites([...favorites, id]);
