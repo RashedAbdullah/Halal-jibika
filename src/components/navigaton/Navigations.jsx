@@ -5,15 +5,30 @@ import { FaSignInAlt } from "react-icons/fa";
 import { jibikaAuth } from "./../../auth/firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { CgClose } from "react-icons/cg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Navigations = () => {
   const [user] = useAuthState(jibikaAuth);
   const [isMenu, setIsMenu] = useState(false);
+  const [isScrolledUp, setIsScrolledUp] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolledUp(scrollTop <= 0 || scrollTop < lastScrollTop);
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    };
+    let lastScrollTop = 0;
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <div>
-      <div className="headerBox">
+    <div >
+      <div className="emptyHeight"></div>
+      <div className={`headerBox ${isScrolledUp ? "visible" : "hidden"}`}>
         <header>
           <div className="logo">
             <img

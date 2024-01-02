@@ -1,3 +1,16 @@
+.emptyHeight {
+  height: 76px;
+  background-color: inherit;
+}
+
+.headerBox {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  top: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
 header {
   width: 100%;
   padding: 1rem 6%;
@@ -10,6 +23,15 @@ header {
   align-items: center;
   background-color: rgb(0, 73, 73);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none; /* Disable pointer events for hidden element */
 }
 
 .navbar > ul {
