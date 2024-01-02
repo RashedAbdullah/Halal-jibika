@@ -8,10 +8,14 @@
 }
 
 .formBox {
+    box-sizing: border-box;
     min-width: 400px;
     border: 1px solid rgba(255, 255, 255, 0.506);
     border-radius: 20px;
     padding: 20px;
+    @media (max-width: 600px) {
+        border-radius: 0;
+    }
 }
 
 .or {
@@ -29,6 +33,10 @@
 
 .createAccount {
     margin: 20px;
+}
+
+.signupForm {
+    margin: 30px;
 }
 
 .signupForm input {
