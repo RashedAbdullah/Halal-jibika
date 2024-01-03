@@ -79,15 +79,15 @@ const Navigations = () => {
                     >
                       {user?.displayName}
                     </span>
-                    <img
+                    {user?.photoURL ? <img
                       style={{
                         height: "30px",
                         width: "30px",
                         borderRadius: "50%",
                       }}
                       src={user?.photoURL}
-                      alt=""
-                    />
+                      alt="User profile"
+                    /> : <FaUserAstronaut size="25px" />}
                   </NavLink>
                 ) : (
                   <NavLink to="/signin" style={{ fontSize: "25px" }}>
@@ -97,8 +97,8 @@ const Navigations = () => {
               </li>
             </ul>
             <ul className="menuBar">
-              <li className="">
-                <button onClick={() => setIsMenu(!isMenu)}>
+              <li >
+                <button style={{color: isLight ? "black" : "white"}} onClick={() => setIsMenu(!isMenu)}>
                   {isMenu ? (
                     <CgClose size={"22px"} />
                   ) : (
@@ -136,7 +136,7 @@ const Navigations = () => {
                 <NavLink to="/favorite">Favorites</NavLink>
               </li>
               <li>
-                <a onClick={handleLightDark}>
+                <a style={{cursor: "pointer"}} onClick={handleLightDark}>
                   {isLight ? <MdNightlight /> : <MdOutlineLightMode />}
                 </a>
               </li>

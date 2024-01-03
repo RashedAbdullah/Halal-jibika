@@ -18,14 +18,21 @@ const SignInForm = () => {
   useEffect(() => {
     const handleSignInEffect = async () => {
       if (loading) {
-        return <LoadingPage/>;
+        <LoadingPage />;
       }
 
       if (error) {
-        return Swal.fire({
-          title: error?.message,
-          icon: "error",
-        });
+        if (error?.code === "auth/invalid-credential") {
+          return Swal.fire({
+            text: "Enter valid informations",
+            icon: "error",
+          });
+        } else {
+          return Swal.fire({
+            text: error?.message,
+            icon: "error",
+          });
+        }
       }
     };
 

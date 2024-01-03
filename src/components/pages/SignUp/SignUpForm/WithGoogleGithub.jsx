@@ -15,28 +15,35 @@ const WithGoogleGithub = () => {
     useSignInWithGoogle(jibikaAuth);
   const [signInWithGithub, githubUser, githubLoading, githubError] =
     useSignInWithGithub(jibikaAuth);
-
   const navigate = useNavigate();
 
-  if(googleLoading || githubLoading){
-    <LoadingPage/>
-  }
-
-  if (googleError || githubError) {
-    return Swal.fire({
-      title: `${googleError} ${githubError}`,
-      icon: "error",
-    });
+  if (googleLoading || githubLoading) {
+    <LoadingPage />;
   }
 
   useEffect(() => {
-    if (googleUser || githubUser) {
-      Swal.fire({
-        title: "Successfully Signed in",
-        icon: "success",
-      });
-      navigate("/");
-    }
+    const googleGithbErr = () => {
+      if (googleError || githubError) {
+        return Swal.fire({
+          title: `${googleError} ${githubError}`,
+          icon: "error",
+        });
+      }
+    };
+    googleGithbErr();
+  }, [googleError, githubError]);
+
+  useEffect(() => {
+    const googleGithubData = () => {
+      if (googleUser || githubUser) {
+        Swal.fire({
+          text: "Successfully Signed in",
+          icon: "success",
+        });
+        navigate("/");
+      }
+    };
+    googleGithubData();
   }, [googleUser, githubUser, navigate]);
 
   return (

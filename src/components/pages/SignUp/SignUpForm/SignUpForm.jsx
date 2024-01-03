@@ -36,26 +36,37 @@ const SignUpForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+  console.log(user);
+  useEffect(() => {
+    const errFunc = () => {
+      if (error) {
+        if (error?.code === "auth/email-already-in-use") {
+          return Swal.fire({
+            text: "You have already an account with this email",
+            icon: "warning",
+          });
+        } else {
+          console.log(error.code);
+        }
+      }
+    };
+    errFunc();
+  }, [error]);
 
-  if (error) {
-    return Swal.fire({
-      title: error?.message,
-      icon: "error",
-    });
-  }
-  if(loading){
-    return <LoadingPage/>
+  if (loading || updating) {
+    <LoadingPage />;
   }
 
   useEffect(() => {
     if (user) {
+      navigate("/");
       Swal.fire({
-        title: "Successfully sign up done",
+        title: "Successfully signed up",
         icon: "success",
       }).then(() => {});
       return navigate("/");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   const handleSignUpForm = async (e) => {
     e.preventDefault();
@@ -68,7 +79,7 @@ const SignUpForm = () => {
       formInputs.conPassword.trim() === ""
     ) {
       return Swal.fire({
-        title: "Empty inputs not valid",
+        text: "Empty inputs not valid",
         icon: "warning",
       });
     } else if (formInputs.password !== formInputs.conPassword) {
@@ -76,9 +87,19 @@ const SignUpForm = () => {
     } else if (formInputs.password.length < 6) {
       setSixDigit("Password must be 6 digit or getter than");
     }
-
-    await createUserWithEmailAndPassword(formInputs.email, formInputs.password);
-    await updateProfile(`${formInputs.fname} ${formInputs.lname}`);
+    try {
+      await createUserWithEmailAndPassword(
+        formInputs.email,
+        formInputs.password
+      );
+      await updateProfile({
+        displayName: `${formInputs.fname} ${formInputs.lname}`,
+        photoURL:
+          "https://scontent.fdac14-1.fna.fbcdn.net/v/t39.30808-6/414720608_3469179550038797_7218561405128909443_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=efb6e6&_nc_eui2=AeHWhB2_66J1fAsyjc0RzTq4QjZ633H6iZFCNnrfcfqJkTHUnrtUVXeb9E39PY2L3j9TfSPQ4PP1xMC0KSATu0dA&_nc_ohc=RqlCus4fub8AX-vr870&_nc_ht=scontent.fdac14-1.fna&oh=00_AfDQBAi4g3CQCEsH_llavDWcO13zoc6if7owp53mJCNC6A&oe=659AE351",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="signUpOutBox">
