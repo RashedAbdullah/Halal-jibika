@@ -68,7 +68,6 @@ const EdtiJob = () => {
 
   const handleAddJobFrom = (e) => {
     e.preventDefault();
-    console.log(id);
     postData();
   };
 

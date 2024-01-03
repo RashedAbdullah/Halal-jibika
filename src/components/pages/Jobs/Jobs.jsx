@@ -5,7 +5,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../auth/firebase.config";
-import { favoriteDataFunc } from "./../../../localStorage/localStorage";
 import { FaPlus } from "react-icons/fa6";
 import "./JobsCSS.css";
 
@@ -13,12 +12,6 @@ const Jobs = () => {
   const allJobs = useLoaderData();
 
   const [user] = useAuthState(jibikaAuth);
-
-  const [favorites, setFavorites] = useState(favoriteDataFunc());
-
-  const handleFavorites = (id) => {
-    setFavorites([...favorites, id]);
-  };
 
   const handleDeleteJob = (id) => {
     if (!user) {
@@ -73,7 +66,6 @@ const Jobs = () => {
             key={singleJob.id}
             singleJob={singleJob}
             handleDeleteJob={handleDeleteJob}
-            handleFavorites={handleFavorites}
           />
         ))}
       </div>

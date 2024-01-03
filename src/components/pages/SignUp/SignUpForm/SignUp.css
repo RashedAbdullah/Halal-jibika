@@ -5,6 +5,8 @@
     height: 100vh;
     opacity: 0;
     animation: fadeIn 1s ease-out forwards;
+    background: linear-gradient(to right, #004d4d, #003131);
+    color: white;
 }
 
 .formBox {

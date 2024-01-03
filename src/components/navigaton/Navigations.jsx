@@ -1,13 +1,17 @@
 import "./navigations.css";
 import { TiThMenu } from "react-icons/ti";
 import { NavLink } from "react-router-dom";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaSignInAlt, FaUserAstronaut } from "react-icons/fa";
 import { jibikaAuth } from "./../../auth/firebase.config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { CgClose } from "react-icons/cg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { HalalJibikaContext } from "../../context/JibikaContext";
+import { MdNightlight } from "react-icons/md";
+import { MdOutlineLightMode } from "react-icons/md";
 
 const Navigations = () => {
+  const { handleLightDark, isLight } = useContext(HalalJibikaContext);
   const [user] = useAuthState(jibikaAuth);
   const [isMenu, setIsMenu] = useState(false);
   const [isScrolledUp, setIsScrolledUp] = useState(true);
@@ -26,7 +30,7 @@ const Navigations = () => {
   }, []);
 
   return (
-    <div >
+    <div>
       <div className="emptyHeight"></div>
       <div className={`headerBox ${isScrolledUp ? "visible" : "hidden"}`}>
         <header>
@@ -56,6 +60,11 @@ const Navigations = () => {
                 <NavLink to="/favorite">Favorites</NavLink>
               </li>
               <li>
+                <a onClick={handleLightDark}>
+                  {isLight ? <MdNightlight /> : <MdOutlineLightMode />}
+                </a>
+              </li>
+              <li>
                 {user ? (
                   <NavLink
                     style={{
@@ -65,7 +74,11 @@ const Navigations = () => {
                     }}
                     to={"/userProfile"}
                   >
-                    <span style={{ color: "aqua" }}>{user?.displayName}</span>
+                    <span
+                      style={{ color: isLight ? "black" : "rgb(0,225,225)" }}
+                    >
+                      {user?.displayName}
+                    </span>
                     <img
                       style={{
                         height: "30px",
@@ -97,7 +110,15 @@ const Navigations = () => {
           </nav>
         </header>
         {isMenu && (
-          <nav onClick={() => setIsMenu(!isMenu)} className="smNavbar">
+          <nav
+            style={{
+              background: isLight
+                ? "linear-gradient(to right, #9dEEEE, #adEEEE)"
+                : "linear-gradient(to right, #004d4d, #003131)",
+            }}
+            onClick={() => setIsMenu(!isMenu)}
+            className="smNavbar"
+          >
             <ul>
               <li>
                 <NavLink to="/">Home</NavLink>
@@ -115,6 +136,11 @@ const Navigations = () => {
                 <NavLink to="/favorite">Favorites</NavLink>
               </li>
               <li>
+                <a onClick={handleLightDark}>
+                  {isLight ? <MdNightlight /> : <MdOutlineLightMode />}
+                </a>
+              </li>
+              <li>
                 {user ? (
                   <NavLink
                     style={{
@@ -124,16 +150,24 @@ const Navigations = () => {
                     }}
                     to={"/userProfile"}
                   >
-                    <span style={{ color: "aqua" }}>{user?.displayName}</span>
-                    <img
-                      style={{
-                        height: "30px",
-                        width: "30px",
-                        borderRadius: "50%",
-                      }}
-                      src={user?.photoURL}
-                      alt=""
-                    />
+                    <span
+                      style={{ color: isLight ? "black" : "rgb(0,225,225)" }}
+                    >
+                      {user?.displayName}
+                    </span>
+                    {user?.photoURL ? (
+                      <img
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                          borderRadius: "50%",
+                        }}
+                        src={user?.photoURL}
+                        alt="User profile"
+                      />
+                    ) : (
+                      <FaUserAstronaut size="25px" />
+                    )}
                   </NavLink>
                 ) : (
                   <NavLink to="/signin" style={{ fontSize: "25px" }}>

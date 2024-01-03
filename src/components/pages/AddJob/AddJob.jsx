@@ -5,8 +5,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddJob = () => {
-
-
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({
     company: "",
@@ -38,6 +36,21 @@ const AddJob = () => {
       qualification: inputData.qualification,
       description: inputData.description,
     };
+    if (
+      inputData.title.trim() === "" ||
+      inputData.url.trim() === "" ||
+      inputData.company.trim() === "" ||
+      inputData.position.trim() === "" ||
+      inputData.location.trim() === "" ||
+      inputData.experience.trim() === "" ||
+      inputData.qualification.trim() === "" ||
+      inputData.description.trim() === ""
+    ) {
+      return Swal.fire({
+        title: "Enter All Informations",
+        icon: "warning",
+      });
+    }
     axios
       .post("http://localhost:9000/jobs", serverData)
       .then(function (response) {

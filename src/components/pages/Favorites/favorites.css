@@ -10,19 +10,18 @@
   }
 
 .favoriteCard {
-    background-color: rgb(0, 105, 105);
+    /* background-color: rgb(0, 105, 105); */
     padding: 20px;
     border-radius: 10px;
     position: relative;
     letter-spacing: 1px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
-    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
 .favoriteCard:hover {
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); 
   }
 
 .favoriteCard img {
@@ -39,7 +38,7 @@
   }
   
   .favoriteCard span {
-    color: aqua;
+    color: rgb(0, 175, 175);
   }
   
 @media (max-width: 1200px) {

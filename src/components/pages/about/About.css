@@ -19,25 +19,29 @@
 }
 
 .aboutNotRounded > div p {
-    background: linear-gradient(45deg, #126767, #035a5a);
     padding: 15px;
     border-radius: 8px;
     margin: 10px 0;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  }
+}
+
+.aboutOutRoundFolder {
+  height: 70%;
+  min-width: 40%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .aboutRoundedFolder {
-    height: 70%;
-    min-width: 40%;
-    padding: 50px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background: linear-gradient(45deg, #115c5c, #004949);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    animation: fadeIn 1s ease-out forwards;
-  
-    display: flex;
-    align-items: center;
+  width: 90%;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  animation: fadeIn 1s ease-out forwards;
+  display: flex;
+  align-items: center;
 }
 
 .aboutRoundedFolder div h1  {

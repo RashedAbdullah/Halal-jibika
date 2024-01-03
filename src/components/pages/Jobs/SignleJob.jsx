@@ -19,9 +19,8 @@ const SignleJob = ({ singleJob, handleDeleteJob, handleFavorites }) => {
 
   const handleSingleID = (id) => {
     if (!user) {
-      navigate("/signin");
       return Swal.fire({
-        title: "Sign in first for see details",
+        text: "Sign in first for see details",
         icon: "warning",
       });
     } else {
@@ -32,9 +31,8 @@ const SignleJob = ({ singleJob, handleDeleteJob, handleFavorites }) => {
 
   const handleApplyJob = () => {
     if (!user) {
-      navigate("/signin");
       return Swal.fire({
-        title: "Without signed in Cannot Apply",
+        text: "Without signed in Cannot Apply",
         icon: "warning",
       });
     } else {
@@ -58,6 +56,12 @@ const SignleJob = ({ singleJob, handleDeleteJob, handleFavorites }) => {
       qualification: singleJob.qualification,
       description: singleJob.description,
     };
+    if (!user) {
+      return Swal.fire({
+        text: "Cannot add as favorite without sign in",
+        icon: "warning",
+      });
+    }
     axios
       .put(`http://localhost:9000/jobs/${id}`, favoriteData)
       .then(function (response) {
@@ -105,17 +109,23 @@ const SignleJob = ({ singleJob, handleDeleteJob, handleFavorites }) => {
 
       <div className="jobBtns">
         <div className="addDeleteEdtiBtn">
-          <button onClick={() => handleDeleteJob(singleJob.id)}>
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => handleDeleteJob(singleJob.id)}
+          >
             <TiDeleteOutline size={"25px"} />
-          </button>
-          <button>
-            <NavLink to={`/jobs/${singleJob.id}`}>
-              <MdEditSquare size={"25px"} />
-            </NavLink>
-          </button>
-          <button onClick={() => handleFavoriteJobs(singleJob.id)}>
+          </a>
+
+          <NavLink to={`/jobs/${singleJob.id}`}>
+            <MdEditSquare size={"25px"} />
+          </NavLink>
+
+          <a
+            style={{ cursor: "pointer" }}
+            onClick={() => handleFavoriteJobs(singleJob.id)}
+          >
             <FaRegStar size={"25px"} />
-          </button>
+          </a>
         </div>
         <div>
           <button

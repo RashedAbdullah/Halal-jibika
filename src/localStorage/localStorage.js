@@ -1,7 +1,7 @@
-export const favoriteDataFunc = ()=>{
-    const data = JSON.parse(localStorage.getItem("favoriteData"));
+export const localLight = ()=>{
+    const data = JSON.parse(localStorage.getItem("isLight"));
     if(data){
         return data;
     }
-    return [];
+    return false;
 }

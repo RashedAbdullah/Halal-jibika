@@ -6,6 +6,8 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { jibikaAuth } from "../../../../auth/firebase.config";
 import Swal from "sweetalert2";
 import LoadingPage from "../../loading/LoadingPage";
+import { FaHome } from "react-icons/fa";
+import { IoCaretBackCircle } from "react-icons/io5";
 const SignInForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -123,7 +125,7 @@ const SignInForm = () => {
                 type="submit"
                 className="signUpBtn"
               >
-                Sign up
+                Sign in
               </button>
             </div>
           </form>
@@ -139,6 +141,21 @@ const SignInForm = () => {
               Create An Account
             </NavLink>
           </p>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "30px",
+            marginTop: "10px",
+            fontSize: "30px",
+          }}
+        >
+          <IoCaretBackCircle
+            onClick={() => navigate(-1)}
+            style={{ cursor: "pointer" }}
+          />{" "}
+          <FaHome onClick={() => navigate("/")} style={{ cursor: "pointer" }} />
         </div>
       </div>
     </div>

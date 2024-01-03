@@ -18,7 +18,11 @@ import ApplyForJob from "../components/pages/apply/ApplyForJob";
 
 export const routes = createBrowserRouter([
   {
-    element: <LayoutPage />,
+    element: (
+      <JibikaContext>
+        <LayoutPage />
+      </JibikaContext>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
