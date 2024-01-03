@@ -6,7 +6,9 @@ import "./favorites.css";
 const Favorite = () => {
   const [favorites, setFavorites] = useState(null);
   const [error, setError] = useState(null);
-
+  const trueFavorites = favorites?.filter(
+    (favorite) => favorite.isFavorite === true
+  );
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,11 +23,19 @@ const Favorite = () => {
 
   return (
     <div>
-      <h2 style={{textAlign: "center", fontSize: "40px", margin: "30px 0 10px 0"}}>Your Favorite Jobs</h2>
-      <div className="mainFavoriteDiv">
-        {favorites?.map(
-          (favorite) =>
-            favorite.isFavorite && (
+      {trueFavorites?.length > 0 ? (
+        <div>
+          <h2
+            style={{
+              textAlign: "center",
+              fontSize: "40px",
+              margin: "30px 0 10px 0",
+            }}
+          >
+            Your Favorite Jobs
+          </h2>
+          <div className="mainFavoriteDiv">
+            {trueFavorites?.map((favorite) => (
               <div className="favoriteCard" key={favorite.id}>
                 <p className="">{favorite.position}</p>
                 <div className="">
@@ -46,9 +56,14 @@ const Favorite = () => {
                   <FaLocationCrosshairs /> {favorite.location}
                 </p>
               </div>
-            )
-        )}
-      </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="noFavorite">
+          <h3>No Favorite Added Yet!</h3>
+        </div>
+      )}
     </div>
   );
 };

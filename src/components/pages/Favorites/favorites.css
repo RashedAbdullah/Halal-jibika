@@ -58,3 +58,11 @@
       opacity: 1;
     }
   }
+
+  .noFavorite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    font-size: 30px;
+  }

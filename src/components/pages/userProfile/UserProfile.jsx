@@ -28,7 +28,6 @@ const UserProfile = () => {
           </div>
           <p>Name: {user?.displayName}</p>
           <p>Email: {user?.email}</p>
-          <p>Name: {user?.email}</p>
           <p>Last sign in time: {user?.metadata.lastSignInTime}</p>
           <p>Creation time: {user?.metadata.creationTime}</p>
         </div>

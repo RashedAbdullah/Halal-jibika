@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import FooterComp from "./../components/footer/FooterComp";
 import Navigations from "../components/navigaton/Navigations";
 import LoadingPage from "../components/pages/loading/LoadingPage";
@@ -27,6 +27,7 @@ const LayoutPage = () => {
       }}
     >
       <Navigations />
+      <ScrollRestoration />
       <ScrollAnimation />
       {loadingData.state === "loading" ? <LoadingPage /> : <Outlet />}
       <FooterComp />

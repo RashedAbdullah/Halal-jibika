@@ -16,7 +16,7 @@ const EdtiJob = () => {
     qualification,
     description,
   } = useLoaderData();
-  console.log(description);
+
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({
     company: companyName,
@@ -37,6 +37,21 @@ const EdtiJob = () => {
   };
 
   const postData = () => {
+    if(
+      inputData.title.trim() === "" ||
+      inputData.company.trim() === "" ||
+      inputData.position.trim() === "" ||
+      inputData.experience.trim() === "" ||
+      inputData.qualification.trim() === "" ||
+      inputData.location.trim() === "" ||
+      inputData.description.trim() === "" ||
+      inputData.logo.trim() === ""
+      ){
+      return Swal.fire({
+        text: "Enter valid info!",
+        icon: "warning"
+      });
+    }
     const serverData = {
       id: id,
       title: inputData.title,

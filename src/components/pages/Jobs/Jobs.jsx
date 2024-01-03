@@ -10,6 +10,7 @@ import "./JobsCSS.css";
 
 const Jobs = () => {
   const allJobs = useLoaderData();
+  const [render, setRender] = useState(allJobs);
 
   const [user] = useAuthState(jibikaAuth);
 
@@ -44,6 +45,7 @@ const Jobs = () => {
           text: "Your file has been deleted.",
           icon: "success",
         });
+        setRender(render.filter((data) => data.id !== id));
       }
     });
   };
@@ -61,7 +63,7 @@ const Jobs = () => {
         <h2>Available Jobs</h2>
       </div>
       <div className="allJobs">
-        {allJobs?.map((singleJob) => (
+        {render?.map((singleJob) => (
           <SignleJob
             key={singleJob.id}
             singleJob={singleJob}
