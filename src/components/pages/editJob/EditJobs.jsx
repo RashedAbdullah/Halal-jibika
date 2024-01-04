@@ -37,7 +37,7 @@ const EdtiJob = () => {
   };
 
   const postData = () => {
-    if(
+    if (
       inputData.title.trim() === "" ||
       inputData.company.trim() === "" ||
       inputData.position.trim() === "" ||
@@ -46,10 +46,10 @@ const EdtiJob = () => {
       inputData.location.trim() === "" ||
       inputData.description.trim() === "" ||
       inputData.logo.trim() === ""
-      ){
+    ) {
       return Swal.fire({
         text: "Enter valid info!",
-        icon: "warning"
+        icon: "warning",
       });
     }
     const serverData = {

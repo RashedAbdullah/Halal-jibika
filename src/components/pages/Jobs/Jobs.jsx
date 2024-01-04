@@ -14,6 +14,19 @@ const Jobs = () => {
 
   const [user] = useAuthState(jibikaAuth);
 
+  const func = (states, id) => {
+    const trueValue = allJobs.map((data) => {
+      if (data.id == id) {
+        return {
+          ...data,
+          isFavorite: states,
+        };
+      }
+      return data;
+    });
+    setRender(trueValue);
+  };
+
   const handleDeleteJob = (id) => {
     if (!user) {
       return Swal.fire({
@@ -68,6 +81,7 @@ const Jobs = () => {
             key={singleJob.id}
             singleJob={singleJob}
             handleDeleteJob={handleDeleteJob}
+            func={func}
           />
         ))}
       </div>

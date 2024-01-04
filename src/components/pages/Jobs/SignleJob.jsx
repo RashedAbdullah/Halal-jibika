@@ -10,10 +10,9 @@ import { jibikaAuth } from "../../../auth/firebase.config";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const SignleJob = ({ singleJob, handleDeleteJob }) => {
+const SignleJob = ({ singleJob, handleDeleteJob, func }) => {
   const navigate = useNavigate();
   const [user] = useAuthState(jibikaAuth);
-  const [isFavorite, setIsFavorite] = useState(singleJob.isFavorite);
 
   const handleApplyJob = () => {
     if (!user) {
@@ -27,9 +26,10 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
   };
 
   const handleFavoriteJobs = (id) => {
+    const truFav = !singleJob.isFavorite;
     const favoriteData = {
       ...singleJob,
-      isFavorite: !singleJob.isFavorite,
+      isFavorite: truFav,
     };
     if (!user) {
       return Swal.fire({
@@ -41,7 +41,6 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
     axios
       .put(`http://localhost:9000/jobs/${id}`, favoriteData)
       .then(function (response) {
-        setIsFavorite(response.data.isFavorite);
         if (response.data.isFavorite) {
           return Swal.fire({
             position: "center",
@@ -53,7 +52,7 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
         } else {
           return Swal.fire({
             position: "center",
-            icon: "info",
+            icon: "warning",
             text: "Removed From Favorite",
             showConfirmButton: false,
             timer: 1000,
@@ -66,6 +65,7 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
           icon: "error",
         });
       });
+    func(truFav, singleJob.id);
   };
 
   return (
@@ -104,7 +104,7 @@ const SignleJob = ({ singleJob, handleDeleteJob }) => {
             style={{ cursor: "pointer" }}
             onClick={() => handleFavoriteJobs(singleJob.id)}
           >
-            {isFavorite ? (
+            {singleJob?.isFavorite ? (
               <FaStar size={"25px"} />
             ) : (
               <FaRegStar size={"25px"} />

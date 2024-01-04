@@ -20,7 +20,7 @@ const PrivateRoute = ({ children }) => {
   }, [user, loading]);
 
   if (loading) {
-    return <LoadingPage/>;
+    return <LoadingPage />;
   }
 
   if (!user) {

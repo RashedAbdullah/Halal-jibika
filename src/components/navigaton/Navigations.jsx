@@ -16,6 +16,7 @@ const Navigations = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [isScrolledUp, setIsScrolledUp] = useState(true);
 
+  // Scroll up and scroll down animation.
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -57,7 +58,9 @@ const Navigations = () => {
                 <NavLink to="/contact">Contact</NavLink>
               </li>
               <li>
-                <NavLink to="/favorite">Favorites</NavLink>
+                <NavLink to="/favorite" className={"favLength"}>
+                  Favorites
+                </NavLink>
               </li>
               <li>
                 <a onClick={handleLightDark}>
@@ -79,15 +82,19 @@ const Navigations = () => {
                     >
                       {user?.displayName}
                     </span>
-                    {user?.photoURL ? <img
-                      style={{
-                        height: "30px",
-                        width: "30px",
-                        borderRadius: "50%",
-                      }}
-                      src={user?.photoURL}
-                      alt="User profile"
-                    /> : <FaUserAstronaut size="25px" />}
+                    {user?.photoURL ? (
+                      <img
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                          borderRadius: "50%",
+                        }}
+                        src={user?.photoURL}
+                        alt="User profile"
+                      />
+                    ) : (
+                      <FaUserAstronaut size="25px" />
+                    )}
                   </NavLink>
                 ) : (
                   <NavLink to="/signin" style={{ fontSize: "25px" }}>
@@ -97,8 +104,11 @@ const Navigations = () => {
               </li>
             </ul>
             <ul className="menuBar">
-              <li >
-                <button style={{color: isLight ? "black" : "white"}} onClick={() => setIsMenu(!isMenu)}>
+              <li>
+                <button
+                  style={{ color: isLight ? "black" : "white" }}
+                  onClick={() => setIsMenu(!isMenu)}
+                >
                   {isMenu ? (
                     <CgClose size={"22px"} />
                   ) : (
@@ -136,7 +146,7 @@ const Navigations = () => {
                 <NavLink to="/favorite">Favorites</NavLink>
               </li>
               <li>
-                <a style={{cursor: "pointer"}} onClick={handleLightDark}>
+                <a style={{ cursor: "pointer" }} onClick={handleLightDark}>
                   {isLight ? <MdNightlight /> : <MdOutlineLightMode />}
                 </a>
               </li>
