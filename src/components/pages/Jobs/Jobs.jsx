@@ -46,7 +46,7 @@ const Jobs = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:9000/jobs/${id}`)
+          .delete(`https://halal-jobs.onrender.com/jobs/${id}`)
           .then(function (response) {
             console.log(response);
           })

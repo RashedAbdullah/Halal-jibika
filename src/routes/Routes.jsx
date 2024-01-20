@@ -35,7 +35,7 @@ export const routes = createBrowserRouter([
           </JibikaContext>
         ),
         path: "/jobs",
-        loader: () => fetch("http://localhost:9000/jobs"),
+        loader: () => fetch("https://halal-jobs.onrender.com/jobs"),
       },
       {
         element: (
@@ -45,7 +45,7 @@ export const routes = createBrowserRouter([
         ),
         path: "/jobs/:editJob",
         loader: ({ params }) =>
-          fetch(`http://localhost:9000/jobs/${params.editJob}`),
+          fetch(`https://halal-jobs.onrender.com/jobs/${params.editJob}`),
       },
       {
         element: <AboutPage />,

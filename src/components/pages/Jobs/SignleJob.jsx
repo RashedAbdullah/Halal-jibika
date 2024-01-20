@@ -39,7 +39,7 @@ const SignleJob = ({ singleJob, handleDeleteJob, func }) => {
     }
 
     axios
-      .put(`http://localhost:9000/jobs/${id}`, favoriteData)
+      .put(`https://halal-jobs.onrender.com/jobs/${id}`, favoriteData)
       .then(function (response) {
         if (response.data.isFavorite) {
           return Swal.fire({

@@ -64,7 +64,7 @@ const EdtiJob = () => {
       logo: inputData.logo,
     };
     axios
-      .put(`http://localhost:9000/jobs/${id}`, serverData)
+      .put(`https://halal-jobs.onrender.com/jobs/${id}`, serverData)
       .then(function (response) {
         console.log(response.data);
         navigate(-1);

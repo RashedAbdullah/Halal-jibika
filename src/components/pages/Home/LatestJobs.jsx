@@ -16,7 +16,7 @@ const LatestJobs = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:9000/jobs");
+        const response = await axios.get("https://halal-jobs.onrender.com/jobs");
         setLatestJobs(response.data);
       } catch (error) {
         setError(error.message);

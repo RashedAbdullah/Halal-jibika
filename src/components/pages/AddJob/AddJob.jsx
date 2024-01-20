@@ -52,7 +52,7 @@ const AddJob = () => {
       });
     }
     axios
-      .post("http://localhost:9000/jobs", serverData)
+      .post("https://halal-jobs.onrender.com/jobs", serverData)
       .then(function (response) {
         navigate("/jobs");
         console.log(response);
